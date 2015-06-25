@@ -39,6 +39,9 @@
             this.transition('waitReady');
           }.bind(this), delay*1000);
         },
+        audioNotSupported: function() {
+          alert("Your browser doesn't support HTML5 audio. You won't be able to use this interactive.");
+        },
         click: function() {
           clearTimeout(this._timeout);
           this.transition('tooSoon');
@@ -51,9 +54,6 @@
             $('.instructions-text').text('Click here...');
           }
           this._startTime = Date.now();
-        },
-        audioNotSupported: function() {
-          alert("Your browser doesn't support HTML5 audio. You won't be able to use this interactive.");
         },
         click: function() {
           this._clickTime = Date.now();
