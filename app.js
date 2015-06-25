@@ -4,6 +4,7 @@
     _startTime: 0,
     _clickTime: 0,
     _audioCtx: null,
+    _oscillator: null,
     mode: 'light',
     initialize: function() {
       var contextClass = (window.AudioContext || window.webkitAudioContext);
@@ -32,9 +33,11 @@
           } else {
             $('.instructions-text').text('Click when you hear the sound...');
           }
+          var delay = Math.random() * 6 + 1;
+          this._oscillator = this._playSound(delay);
           this._timeout = setTimeout(function() {
             this.transition('waitReady');
-          }.bind(this), Math.random() * 6000 + 1000);
+          }.bind(this), delay*1000);
         },
         click: function() {
           clearTimeout(this._timeout);
@@ -46,8 +49,6 @@
           if (this.mode === 'light') {
             $('.content').css({backgroundColor: 'green'});
             $('.instructions-text').text('Click here...');
-          } else {
-            this._playSound();
           }
           this._startTime = Date.now();
         },
@@ -66,6 +67,9 @@
             $('.instructions-text').text('Please wait for the green before clicking');
           } else {
             $('.instructions-text').text('Please wait for the sound before clicking');
+          }
+          if (this._oscillator) {
+            this._oscillator.stop(0);
           }
           setTimeout(function() {
             this.transition('wait');
@@ -86,7 +90,7 @@
       },
     },
 
-    _playSound: function() {
+    _playSound: function(delay) {
       if (this._audioCtx === null) {
         this.handle('audioNotSupported');
         return;
@@ -96,10 +100,9 @@
       oscillator.frequency.value = 330;
       oscillator.connect(this._audioCtx.destination);
 
-      oscillator.start(0);
-      setTimeout(function() {
-        oscillator.stop(0);
-      }.bind(this), 1000);
+      oscillator.start(this._audioCtx.currentTime + delay);
+      oscillator.stop(this._audioCtx.currentTime + delay + 0.7);
+      return oscillator;
     },
 
     click: function() {
