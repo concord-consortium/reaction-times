@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Light Reaction Time</title>
+    <link rel="stylesheet" href="app.css">
+  </head>
+  <body>
+    <div class="content">
+      <div class="results-text">
+        <div>Your reaction time was:</div>
+        <div class="reaction-time"></div>
+      </div>
+      <div class="instructions-text"></div>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/3.9.3/lodash.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/machina.js/1.1.2/machina.min.js"></script>
+    <script src="app.js"></script>
+    <script>
+      var app = new App({
+        mode: 'light'
+      });
+
+      $('.content').click(function () {
+        app.click();
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+body {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.content {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.results-text {
+  /*display: none;*/
+  position: absolute;
+  left: 0;
+  width: 100%;
+  top: 50%;
+  margin-top: -3.5em;
+  text-align: center;
+}
+
+.instructions-text {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  top: 50%;
+  margin-top: -0.5em;
+  text-align: center;
+}
