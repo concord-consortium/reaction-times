@@ -21,7 +21,8 @@
         mode: 'light'
       });
 
-      $('.content').click(function () {
+      $('.content').on('mousedown touchstart', function (evt) {
+        evt.preventDefault();
         app.click();
       });
     </script>
