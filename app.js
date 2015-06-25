@@ -96,9 +96,9 @@
       oscillator.frequency.value = 330;
       oscillator.connect(this._audioCtx.destination);
 
-      oscillator.start();
+      oscillator.start(0);
       setTimeout(function() {
-        oscillator.stop();
+        oscillator.stop(0);
       }.bind(this), 1000);
     },
 
