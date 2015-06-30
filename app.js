@@ -27,14 +27,14 @@
       wait: {
         _onEnter: function() {
           $('.results-text').hide();
+          var delay = Math.random() * 6 + 1;
           if (this.mode === 'light') {
             $('.content').css({backgroundColor: 'red'});
             $('.instructions-text').text('Wait for green...');
           } else {
             $('.instructions-text').text('Click when you hear the sound...');
+            this._oscillator = this._playSound(delay);
           }
-          var delay = Math.random() * 6 + 1;
-          this._oscillator = this._playSound(delay);
           this._timeout = setTimeout(function() {
             this.transition('waitReady');
           }.bind(this), delay*1000);
