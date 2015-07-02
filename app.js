@@ -29,8 +29,8 @@
           $('.results-text').hide();
           var delay = Math.random() * 6 + 1;
           if (this.mode === 'light') {
-            $('.content').css({backgroundColor: 'red'});
-            $('.instructions-text').text('Wait for green...');
+            $('.content').css({backgroundColor: 'green'});
+            $('.instructions-text').text('Wait for blue...');
           } else {
             $('.instructions-text').text('Click when you hear the sound...');
             this._oscillator = this._playSound(delay);
@@ -50,7 +50,7 @@
       waitReady: {
         _onEnter: function() {
           if (this.mode === 'light') {
-            $('.content').css({backgroundColor: 'green'});
+            $('.content').css({backgroundColor: 'blue'});
             $('.instructions-text').text('Click here...');
           }
           this._startTime = Date.now();
@@ -64,7 +64,7 @@
         _onEnter: function() {
           $('.content').css({backgroundColor: 'grey'});
           if (this.mode === 'light') {
-            $('.instructions-text').text('Please wait for the green before clicking');
+            $('.instructions-text').text('Please wait for the blue before clicking');
           } else {
             $('.instructions-text').text('Please wait for the sound before clicking');
           }
